@@ -82,9 +82,6 @@ class WebCrawler:
                     
                     # Add new links to the queue
                     urls_to_visit.extend([url for url in links if url not in self.visited_urls])
-                
-                # Be nice to the server
-                time.sleep(0.1)
 
     def save_to_json(self, filename="crawled_data.json"):
         """Save the crawled data to a JSON file"""
