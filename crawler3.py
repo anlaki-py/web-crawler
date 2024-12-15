@@ -11,6 +11,7 @@ exclude = [
         # Language specific pages
         'lang=go', 'lang=node', 'lang=rest', 'lang=ruby', 
         'lang=java', 'lang=javascript', 'lang=php', 'lang=typescript',
+        '/france',
         
         # User interface elements
         '#', # '?', '=',
@@ -43,7 +44,11 @@ exclude = [
         '/pulse/', '/network/', '/graphs/',
         '/issues/new', '/pull/', '/compare/',
         '/edit/', '/delete/', '/archive/',
-        '/stargazers', '/subscribers', '/fork'
+        '/stargazers', '/subscribers', '/fork',
+        
+        # Documents (videos, photos, archives...)
+        '.zip', '.pdf', '/assets/', '/documents/',
+        '.png', '.webp', '.jpg', '.jpeg'
     ]
     
 class WebCrawler:
