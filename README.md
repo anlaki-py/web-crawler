@@ -1,106 +1,44 @@
-# Website Crawler
+# Web Crawler and GitHub Documentation Crawler
 
-A Python-based web crawler that systematically browses and archives website content, saving the results in a structured JSON format.
+This repository contains two Python scripts for crawling web pages and GitHub repositories to extract and store relevant content. Below is a brief overview of each script's capabilities.
 
-## Features
+## 1. web_crawler.py
 
-- Full website crawling capability
-- Domain-specific crawling (stays within the same domain)
-- Structured data extraction including:
-  - Page titles
-  - Text content
-  - Meta descriptions
-  - Internal links
-  - Timestamps
-  - HTTP status codes
-- JSON output format
-- Rate limiting to prevent server overload
-- Error handling and retry mechanisms
-- Session management for optimized requests
-- User-agent headers to prevent blocking
+### Overview
+The `web_crawler.py` script is designed to crawl a specified website, extract page content, and save the data in JSON format. It respects `robots.txt` rules and allows customization of crawl depth and chunk size.
 
-## Requirements
+### Features
+- **Domain-Specific Crawling**: Crawls only the specified domain and path.
+- **Robots.txt Compliance**: Respects the rules defined in the website's `robots.txt` file.
+- **Chunked Output**: Saves crawled data in JSON chunks for easier processing.
+- **Customizable Depth**: Allows setting a maximum crawl depth.
+- **Exclusion Rules**: Excludes URLs with specific patterns (e.g., login pages, static assets).
 
-- Python 3.6+
-- requests
-- beautifulsoup4
+### Usage
+1. Run the script and provide the website URL.
+2. Optionally, set the chunk size and maximum crawl depth.
+3. The script will save the crawled data in the `web_crawled_data` directory.
 
-## Installation
+---
 
-1. Clone this repository or download the script
-2. Install required packages:
-   ```
-   pip install requests beautifulsoup4
-   ```
+## 2. gitHub_docs_crawler.py
 
-## Usage
+### Overview
+The `gitHub_docs_crawler.py` script is designed to crawl a GitHub repository, specifically targeting documentation files (e.g., `.md`, `.txt`, `.html`). It extracts file content and metadata, saving the data in JSON format.
 
-1. Run the script:
-   ```
-   python web_crawler.py
-   ```
-2. Enter the target website URL when prompted
-3. The crawler will begin collecting data
-4. Results will be saved in `crawled_data.json`
+### Features
+- **GitHub API Integration**: Uses the GitHub API to fetch repository contents.
+- **File Type Filtering**: Targets specific file extensions (e.g., `.md`, `.html`).
+- **Rate Limit Handling**: Automatically pauses when GitHub API rate limits are approached.
+- **Chunked Output**: Saves crawled data in JSON chunks for easier processing.
+- **Customizable Depth**: Allows setting a maximum directory recursion depth.
 
-## Output Format
+### Usage
+1. Run the script and provide the GitHub repository URL.
+2. Optionally, provide a GitHub token for authenticated requests.
+3. The script will save the crawled data in the `github_api_crawled_data` directory.
 
-The script generates a JSON file with the following structure:
+---
 
-```json
-{
-    "base_url": "https://example.com",
-    "crawl_date": "2024-12-14T10:00:00.000000",
-    "total_pages": 42,
-    "pages": [
-        {
-            "url": "https://example.com",
-            "title": "Page Title",
-            "text_content": "Page content...",
-            "meta_description": "Page description",
-            "links": ["https://example.com/page1"],
-            "timestamp": "2024-12-14T10:00:00.000000",
-            "status_code": 200
-        }
-    ]
-}
-```
-
-## Best Practices
-
-- Check robots.txt before crawling
-- Respect website terms of service
-- Adjust sleep time between requests if needed
-- Monitor memory usage for large websites
-- Back up data regularly
-- Verify website permissions before crawling
-
-## Limitations
-
-- Only crawls within the same domain
-- Basic rate limiting (1 second between requests)
-- Memory usage may increase with large websites
-- No support for JavaScript-rendered content
-## License
-
-[MIT License](LICENCE) - feel free to use this code for any purpose.
-
-## Disclaimer
-
-This tool is for educational purposes only. Always ensure you have permission to crawl a website and comply with the site's robots.txt file and terms of service.
-
-## Future Improvements
-
-- Add support for robots.txt parsing
-- Implement advanced rate limiting
-- Add support for JavaScript-rendered content
-- Include image and media file downloading
-- Add proxy support
-- Implement concurrent crawling
-- Add export options for different formats
-- Include crawling progress bar
-- Add resume capability for interrupted crawls
-
-## Author
-
-[anlaki](https://anlaki.carrd.co)
+## Credits
+- The GitHub Documentation Crawler is inspired by the original work by [rsain/GitHub-Crawler](https://github.com/rsain/GitHub-Crawler).

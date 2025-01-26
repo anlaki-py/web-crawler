@@ -11,23 +11,43 @@ import urllib.robotparser
 
 # Exclude URLs with hashtags, question marks, and equals signs
 exclude = [
-    'lang=go', 'lang=node', 'lang=rest', 'lang=ruby',
-    'lang=java', 'lang=javascript', 'lang=php', 'lang=typescript',
-    '/france', '#', 
+    # Country or region-specific paths
+    '/france',
+
+    # Authentication and user management
     '/login', '/signin', '/signup', '/register',
     '/logout', '/signout', '/auth/',
     '/password', '/reset', '/forgot',
     '/settings', '/profile', '/account', '/preferences',
+
+    # Admin and dashboard-related paths
     '/dashboard', '/admin', '/user/',
+
+    # Search, filter, and sorting
     '/search', '/filter', '/sort',
+
+    # File operations
     '/print', '/download', '/upload',
     '/raw/', '/blame/', '/commits/',
+
+    # Social interactions
     '/comment', '/like', '/share', '/follow',
+
+    # API and webhook endpoints
     '/graphql', '/webhook',
+
+    # Feeds and syndication
     '/feeds/', '/rss/', '/atom/',
+
+    # Tracking and analytics
     '/session', '/track', '/analytics',
-    '.zip', '.pdf', '/assets/', 
-    '.png', '.webp', '.jpg', '.jpeg'
+
+    # Static assets and file types
+    '/assets/', '.zip', '.pdf',
+    '.png', '.webp', '.jpg', '.jpeg', '.gif', '.svg', '.ico',
+
+    # Special characters (hashtags, question marks, equals signs)
+    '#', '?', '='
 ]
 
 class WebCrawler:
@@ -59,9 +79,9 @@ class WebCrawler:
         if not self.current_chunk:
             return
 
-        os.makedirs('crawled_data', exist_ok=True)
+        os.makedirs('web_crawled_data', exist_ok=True)
         
-        filename = f"crawled_data/crawled_data_{timestamp}_chunk{self.chunk_counter}.json"
+        filename = f"web_crawled_data/web_crawled_data_{timestamp}_chunk{self.chunk_counter}.json"
         
         output = {
             'base_url': self.base_url,

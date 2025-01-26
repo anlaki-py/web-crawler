@@ -11,5 +11,6 @@ config/
 pull.sh
 commit.sh
 save.sh
-crawled_data
+*/web_crawled_data/
+*/github_api_crawled_data/
 */.other/
